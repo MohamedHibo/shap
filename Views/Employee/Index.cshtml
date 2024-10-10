@@ -1,0 +1,68 @@
+﻿@model List<Employee>
+
+<h1>Employee</h1>
+
+<p>
+    <a asp-action="Create" asp-controller="Employee" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            
+            <th>
+                Name
+            </th>
+            <th>
+                Salary
+			</th>
+			<th>
+				NameDepart
+			</th>
+           
+            <th> 
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 0; 
+        }
+        
+@foreach (var item in Model) {
+           
+           
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+               
+               
+            <td>
+               @item.Name
+            </td>
+            <td>
+                @item.Salary
+				</td>
+				<td>
+					@if (ViewBag.depart.Count > i)
+					{
+						@ViewBag.depart[i]
+					}
+				</td>
+                
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-dark mx-2">Edit</a>
+                    <a asp-action="AddProject" asp-route-id="@item.Id" class="btn btn-secondary mx-2">ChangeProject</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success mx-2">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mx-2">Delete</a>
+            </td>
+               
+        </tr>
+            i++;
+}
+    </tbody>
+</table>

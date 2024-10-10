@@ -1,0 +1,55 @@
+﻿@model Employee
+
+
+<h1>Details</h1>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Name
+        </dd>
+        <dl class="row">
+            <dt class="col-sm-2">
+                DepartName
+            </dt>
+            <dd class="col-sm-10">
+                @ViewBag.Project
+            </dd>
+            <dl class="row">
+                <dt class="col-sm-2">
+                    ProjectName
+                </dt>
+                <dd class="col-sm-10">
+                    <label>Projects:</label>
+                    <ul>
+                        @if (ViewBag.Projects != null && ViewBag.Projects.Count > 0)
+                        {
+                            foreach (var project in ViewBag.Projects)
+                            {
+                                <li>@project.Name</li>
+                            }
+                        }
+                        else
+                        {
+                            <p>No Projects Assigned</p>
+                        }
+                    </ul>
+                </dd>
+
+        <dt class = "col-sm-2">
+            Salary
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Salary
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary mx-2">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
